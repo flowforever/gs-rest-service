@@ -36,12 +36,18 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
-            <version>1.0.3</version>
+            <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jetty</artifactId>
         </dependency>
     </dependencies>
 
     <properties>
         <java.version>1.8</java.version>
+        <jetty.port>8080</jetty.port>
+        <kotlin.version>1.0.3</kotlin.version>
     </properties>
 
 
@@ -69,6 +75,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 

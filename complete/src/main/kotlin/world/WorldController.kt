@@ -14,7 +14,7 @@ interface IController {
 }
 
 @RestController
-@RequestMapping("kotlin")
+@RequestMapping("/kotlin")
 class WorldController : IController {
 
 
