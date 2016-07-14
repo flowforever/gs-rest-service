@@ -19,11 +19,12 @@ class WorldController : IController {
 
 
     override var goodStr: String = "";
-        get() = field
+        get() {
+            return field;
+        }
         set(value) {
             field = value
         }
-
 
     data class TalkContent(val title: String, val date: String);
 
