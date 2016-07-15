@@ -6,7 +6,6 @@ package mongo
 
 
 import com.mongodb.MongoClient
-import com.mongodb.MongoClientOptions
 import org.bson.Document
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -34,14 +33,18 @@ class DbController {
     }
 
     @RequestMapping("/create")
-    fun create():Long {
-        var testDb = client.getDatabase("test");
+    fun create():Any {
+        val testDb = client.getDatabase("test");
 
-        var items = testDb.getCollection("items");
+        val items = testDb.getCollection("items");
 
-        items.insertOne(Document("name","Trump "+ Date().toString()).append("date", Date()))
+        val document = Document("name","Trump "+ Date().toString()).append("date", Date());
 
-        return items.count();
+        items.insertOne(document)
+
+        data class Result(val count:Long, val document:Document);
+
+        return Result(items.count(), document);
     }
 
     @RequestMapping("/all")
