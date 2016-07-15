@@ -6,18 +6,22 @@ package mongo
 
 
 import com.mongodb.MongoClient
-import com.mongodb.client.FindIterable
+import com.mongodb.MongoClientOptions
 import org.bson.Document
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.util.*
 
 
-var client:MongoClient  = MongoClient("localhost");
-
 @RestController
 @RequestMapping("/mongo")
 class DbController {
+    var client: MongoClient;
+
+    init{
+        client = MongoClient("localhost");
+    }
+
 
     @RequestMapping("/connect")
     fun connect() {

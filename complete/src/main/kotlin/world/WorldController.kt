@@ -19,7 +19,11 @@ interface IController {
 @RestController
 @RequestMapping("/kotlin")
 class WorldController : IController {
-
+    companion object {
+        fun create():WorldController {
+            return WorldController();
+        }
+    }
 
     override var goodStr: String = "";
         get() {
