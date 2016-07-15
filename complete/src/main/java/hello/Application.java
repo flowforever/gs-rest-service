@@ -6,7 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@ComponentScan({"hello", "world"})
+@ComponentScan({
+        "mongo",
+        "hello",
+        "world"})
 @SpringBootApplication
 @EnableAutoConfiguration
 public class Application {
