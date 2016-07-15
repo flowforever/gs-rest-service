@@ -40,11 +40,28 @@ class DbController {
 
         val document = Document("name","Trump "+ Date().toString()).append("date", Date());
 
+        for(a in 1..10000) items.insertOne(Document("name","Trump one by one"+ a).append("date", Date()))
+
         items.insertOne(document)
 
         data class Result(val count:Long, val document:Document);
 
         return Result(items.count(), document);
+    }
+
+    @RequestMapping("/createPatch")
+    fun createPatch(): Any {
+        val testDb = client.getDatabase("test");
+
+        val items = testDb.getCollection("items");
+
+        val many = mutableListOf<Document>();
+
+        for(a in 1..100000) many.add(Document("name","Trump many "+ a).append("date", Date()))
+
+        items.insertMany(many)
+
+        return items.count();
     }
 
     @RequestMapping("/all")
